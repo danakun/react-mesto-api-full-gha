@@ -1,0 +1,59 @@
+// require('dotenv').config();
+const mongoose = require('mongoose');
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { errors } = require('celebrate');
+const limiter = require('./middlewares/limiter');
+// const path = require('path');
+const router = require('./routes/index');
+const errorHandler = require('./middlewares/error-handler');
+// const auth = require('./middlewares/auth');
+// Слушаем 3000 порт
+const { PORT = 3000 } = process.env;
+
+// Создание экземпляра приложения Express
+const app = express();
+
+// Подключаем корс
+app.use(cors({ origin: ['http://localhost:3001'], credentials: true, maxAge: 30 }));
+// app.use(cors());
+
+// Подключаем rate-limiter
+app.use(limiter);
+// Подключаем защиту зашоловков
+app.use(helmet());
+// Подключаем базу данных монго
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb') //прописать переменную DB_ADRESS !!!!!
+  .then(() => {
+    console.log('база данных подключена');
+  })
+  .catch(() => {
+    console.log('Не удается подключиться к базе данных');
+  });
+
+app.use(express.json());
+// app.use(express.static(path.join(__dirname, 'public')));   -подключение статичного фронта
+// Подключение логгера запросов
+app.use(requestLogger);
+// Подключение краш теста
+// app.get('/crash-test', () => {
+//   setTimeout(() => {
+//     throw new Error('Сервер сейчас упадёт');
+//   }, 0);
+// }); 
+// Подключение маршрутов, которым авторизация нужна
+app.use(router);
+// app.use('/', usersRouter);
+// app.use('/', cardsRouter);
+// Подключение логгера ошибок
+app.use(errorLogger);
+app.use(errors()); // define errors, обработчик ошибок celebrate
+
+app.use(errorHandler);
+
+app.listen(PORT, () => {
+  // Если всё работает, консоль покажет, какой порт приложение слушает
+  console.log(`App listening on port ${PORT}`);
+});

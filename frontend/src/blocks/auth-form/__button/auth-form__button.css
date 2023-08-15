@@ -1,0 +1,22 @@
+.auth-form__button {
+    width: 100%;
+    margin-top: 216px;
+    margin-bottom: 18px;
+    background-color: white;
+    color: black;
+  }
+  
+  .auth__button-save:hover {
+    opacity: 0.85;
+  }
+  
+  .auth__button-save_disabled {
+    color: #a0a0a0;
+    opacity: 0.6;
+    cursor: auto;
+  }
+  
+  .auth__button-save_disabled:hover {
+    opacity: 0.6;
+  }
+    

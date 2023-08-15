@@ -1,0 +1,6 @@
+.header__navigate {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
