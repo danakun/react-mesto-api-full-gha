@@ -1,7 +1,8 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const { JWT_SECRET } = require('../utils/jwt');
+//const { JWT_SECRET } = require('../utils/jwt');
+const { JWT_SECRET, NODE_ENV } = process.env;
 
 const SALT_ROUNDS = 10;
 
@@ -81,7 +82,7 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        JWT_SECRET,
+        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
         { expiresIn: '7d' },
       );
       // const greeting = `Welcome back, ${user.name}!`;

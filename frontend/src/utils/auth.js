@@ -1,5 +1,6 @@
 export const BASE_URL = 'http://localhost:3000';
  // export const BASE_URL = 'https://mesto.nomoreparties.co/v1/cohort-54';
+ // export const BASE_URL = "https://api.danakun.nomo........";
 
 const getResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
@@ -32,7 +33,7 @@ export const getContent = (jwt) => {
     // credentials: "include",
     headers: {
       'Content-Type': 'application/json',
-      Authorization : `Bearer ${jwt}`, // 'Authorization'?????????
+      'Authorization' : `Bearer ${jwt}`, // 'Authorization'?????????
     },
   }).then(getResponse);
 };

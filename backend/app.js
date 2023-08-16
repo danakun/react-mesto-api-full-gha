@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
 const helmet = require('helmet');
@@ -6,12 +6,12 @@ const cors = require('cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { errors } = require('celebrate');
 const limiter = require('./middlewares/limiter');
-// const path = require('path');
+// const path = require('path'); -первый способ для статики
 const router = require('./routes/index');
 const errorHandler = require('./middlewares/error-handler');
-// const auth = require('./middlewares/auth');
+
 // Слушаем 3000 порт
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, DB_ADRESS = 'mongodb://localhost:27017/mestodb' } = process.env;
 
 // Создание экземпляра приложения Express
 const app = express();
@@ -25,7 +25,7 @@ app.use(limiter);
 // Подключаем защиту зашоловков
 app.use(helmet());
 // Подключаем базу данных монго
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb') //прописать переменную DB_ADRESS !!!!!
+mongoose.connect(DB_ADRESS) //прописать переменную DB_ADRESS 
   .then(() => {
     console.log('база данных подключена');
   })
