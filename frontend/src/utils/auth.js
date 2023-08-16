@@ -1,6 +1,6 @@
-export const BASE_URL = 'http://localhost:3000';
- // export const BASE_URL = 'https://mesto.nomoreparties.co/v1/cohort-54';
- // export const BASE_URL = "https://api.danakun.nomoreparties.co";
+// export const BASE_URL = 'http://localhost:3000';
+// export const BASE_URL = 'https://mesto.nomoreparties.co/v1/cohort-54';
+export const BASE_URL = "https://api.danakun.nomoreparties.co";
 
 const getResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
