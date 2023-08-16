@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { errors } = require('celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const limiter = require('./middlewares/limiter');
 // const path = require('path'); -первый способ для статики
 const router = require('./routes/index');
@@ -19,14 +19,14 @@ const app = express();
 // Подключаем корс
 // вариант для кук
 // app.use(cors({ origin: ['http://localhost:3001', 'https://danakun.nomoreparties.co'], credentials: true, maxAge: 30 }));
- app.use(cors());
+app.use(cors());
 
 // Подключаем rate-limiter
 app.use(limiter);
 // Подключаем защиту зашоловков
 app.use(helmet());
 // Подключаем базу данных монго
-mongoose.connect(DB_ADRESS) //прописать переменную DB_ADRESS 
+mongoose.connect(DB_ADRESS) // прописать переменную DB_ADRESS
   .then(() => {
     console.log('база данных подключена');
   })
@@ -43,7 +43,7 @@ app.use(requestLogger);
 //   setTimeout(() => {
 //     throw new Error('Сервер сейчас упадёт');
 //   }, 0);
-// }); 
+// });
 // Подключение маршрутов, которым авторизация нужна
 app.use(router);
 // app.use('/', usersRouter);

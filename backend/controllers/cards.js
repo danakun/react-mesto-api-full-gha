@@ -9,7 +9,7 @@ const NotFound = require('../errors/NotFound');
 
 const getCards = (req, res, next) => Card
   .find({})
-  .then((cards) => res.status(SUCCESS).send(cards)) //{ data: cards }
+  .then((cards) => res.status(SUCCESS).send(cards)) // { data: cards }
   .catch(next);
 
 const createCard = (req, res, next) => {
@@ -70,7 +70,7 @@ const dislikeCard = (req, res, next) => {
     { $pull: { likes: req.user._id } },
     { new: true },
   )
-    //.populate('likes')
+    // .populate('likes')
     .orFail(new NotFound('Карточки по заданному id не найдено'))
     .then((card) => res.status(SUCCESS).send(card))
     .catch((error) => {

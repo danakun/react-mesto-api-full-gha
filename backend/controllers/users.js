@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-//const { JWT_SECRET } = require('../utils/jwt');
+// const { JWT_SECRET } = require('../utils/jwt');
 const { JWT_SECRET, NODE_ENV } = process.env;
 
 const SALT_ROUNDS = 10;

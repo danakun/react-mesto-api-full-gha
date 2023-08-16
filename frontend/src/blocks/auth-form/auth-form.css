@@ -1,0 +1,14 @@
+.auth-form {
+    margin: 0 auto;
+    max-width: 358px;
+    position: relative;
+    text-align: center;
+}
+
+/* .auth-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  } */
