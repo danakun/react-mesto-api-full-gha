@@ -17,8 +17,9 @@ const { PORT = 3000, DB_ADRESS = 'mongodb://localhost:27017/mestodb' } = process
 const app = express();
 
 // Подключаем корс
-app.use(cors({ origin: ['http://localhost:3001'], credentials: true, maxAge: 30 }));
-// app.use(cors());
+// вариант для кук
+// app.use(cors({ origin: ['http://localhost:3001', 'https://danakun.nomoreparties.co'], credentials: true, maxAge: 30 }));
+ app.use(cors());
 
 // Подключаем rate-limiter
 app.use(limiter);

@@ -11,6 +11,6 @@
 
 IP-адрес 51.250.3.82
 
-Frontend https://danakun
+Frontend https://danakun.nomoreparties.co
 
-Backend https://api.danakun
+Backend https://api.danakun.nomoreparties.co
