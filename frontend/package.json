@@ -18,7 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm run build && scp -r ./build/* danakun@51.250.3.82:/home/danakun/frontend"
   },
   "eslintConfig": {
     "extends": [
@@ -41,5 +41,5 @@
   "devDependencies": {
     "gh-pages": "^5.0.0"
   },
-  "homepage": "./"
+  "homepage": "./" 
 }
