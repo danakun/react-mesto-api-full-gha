@@ -21,9 +21,7 @@ const app = express();
 // app.use(cors({ origin: ['http://localhost:3001', 'https://danakun.nomoreparties.co'], credentials: true, maxAge: 30 }));
 app.use(cors());
 
-// Подключаем rate-limiter
-app.use(limiter);
-// Подключаем защиту зашоловков
+// Подключаем защиту заголовков
 app.use(helmet());
 // Подключаем базу данных монго
 mongoose.connect(DB_ADRESS) // прописать переменную DB_ADRESS
@@ -39,11 +37,13 @@ app.use(express.json());
 // Подключение логгера запросов
 app.use(requestLogger);
 // Подключение краш теста
-// app.get('/crash-test', () => {
-//   setTimeout(() => {
-//     throw new Error('Сервер сейчас упадёт');
-//   }, 0);
-// });
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+// Подключаем rate-limiter
+app.use(limiter);
 // Подключение маршрутов, которым авторизация нужна
 app.use(router);
 // app.use('/', usersRouter);
