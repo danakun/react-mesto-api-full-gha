@@ -18,7 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "npm run build && scp -r ./build/* danakun@51.250.3.82:/home/danakun/frontend"
+    "deploy": "npm run build && scp -r ./build/* danakun@158.160.113.124:/home/danakun/react-mesto-api-full-gha/frontend"
   },
   "eslintConfig": {
     "extends": [

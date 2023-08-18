@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.3.82
+IP 158.160.113.124
 
 Frontend https://danakun.nomoreparties.co
 
