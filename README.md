@@ -28,7 +28,7 @@ You are now ready to explore the mini social network application.
 
 IP: 158.160.113.124
 
-Frontend: [https://danakun.nomoreparties.co](https://danakun.nomoreparties.co)
+Frontend: [[https://danakun.nomoreparties.co](https://danakun.nomoreparties.co](https://danakun-mesto-react.netlify.app/))
 
 Backend: [https://api.danakun.nomoreparties.co](https://api.danakun.nomoreparties.co)
 
